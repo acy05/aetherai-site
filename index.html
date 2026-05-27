@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AetherAI | 複雑をシンプルに。企業成長を加速させる。</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000767",
+                        "on-tertiary-fixed-variant": "#7b2e12",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eff1f4",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "surface-dim": "#d8dadd",
+                        "surface-container": "#eceef1",
+                        "on-primary-container": "#8690ee",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-container": "#e17c5a",
+                        "tertiary-container": "#5c1800",
+                        "on-secondary-container": "#003f5f",
+                        "surface-bright": "#f7f9fc",
+                        "tertiary": "#380b00",
+                        "secondary-container": "#00affe",
+                        "primary": "#1A237E",
+                        "outline": "#767683",
+                        "on-tertiary-fixed": "#390c00",
+                        "surface": "#f7f9fc",
+                        "outline-variant": "#c6c5d4",
+                        "surface-tint": "#4c56af",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bdc2ff",
+                        "secondary-fixed": "#cae6ff",
+                        "surface-container-low": "#f2f4f7",
+                        "secondary": "#006493",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "primary-fixed": "#e0e0ff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary-fixed-dim": "#8dcdff",
+                        "primary-container": "#1a237e",
+                        "on-secondary-fixed": "#001e30",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-secondary-fixed-variant": "#004b70",
+                        "surface-container-high": "#e6e8eb",
+                        "on-surface-variant": "#454652",
+                        "background": "#f7f9fc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "section-padding-mobile": "64px",
+                        "section-padding-desktop": "120px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "button": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "22px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .workflow-node {
+            position: relative;
+            z-index: 10;
+        }
+        .workflow-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #1A237E 0%, #00B0FF 100%);
+            z-index: 1;
+            opacity: 0.3;
+        }
+        .hero-shadow {
+            box-shadow: 0px 32px 64px -12px rgba(26, 35, 126, 0.14);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1A237E;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">AetherAI</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 font-button text-button transition-opacity hover:opacity-80" href="#">サービス</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary font-button text-button transition-opacity hover:opacity-80" href="#">ソリューション</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary font-button text-button transition-opacity hover:opacity-80" href="#">事例紹介</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary font-button text-button transition-opacity hover:opacity-80" href="#">お問い合わせ</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-button text-button hover:opacity-90 transition-all">
+                    相談を予約する
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="py-section-padding-desktop px-gutter max-w-container-max mx-auto overflow-hidden">
+<div class="flex flex-col items-center text-center mb-16">
+<span class="font-label-caps text-label-caps text-secondary mb-4 uppercase tracking-widest">エンタープライズAIオートメーション</span>
+<h1 class="font-display-lg text-display-lg md:text-[64px] md:leading-[72px] text-primary mb-6 max-w-4xl">
+                    複雑をシンプルに。<br/>企業成長を加速させる。
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
+                    既存のワークフローにシームレスに統合されるカスタムAIアシスタントを導入し、定型業務を自動化。セキュリティを重視する組織に、測定可能な生産性の向上をもたらします。
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-button text-button hover:shadow-lg transition-all">
+                        相談を予約する
+                    </button>
+<button class="border border-primary text-primary px-8 py-4 rounded-lg font-button text-button hover:bg-primary/5 transition-all">
+                        事例を見る
+                    </button>
+</div>
+</div>
+<div class="relative max-w-5xl mx-auto">
+<div class="rounded-xl overflow-hidden border border-outline-variant hero-shadow">
+<img alt="エンタープライズ・ダッシュボード・インターフェース" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugkw8q5uMaA6v55vgG9LBzUXz5nNT2FnpNQsIacbpY358kEsYlAUq6Cjfik6dlcd4X0D_g0NXL5UcIvRoHv23rdHQobzIDii2qeenTwEfHqYBOokKfrb6HFSu6g9_jEJDflPkMDtzpYfNjmuBzfXoUTlZuondRfMuq_bSjEG-EhWRddN6y9WmkhGppZDcy1VZfTPejzLD2NDWoFjfdL1D3mg40VHqVy6DcD10-IYfwjFP6rvSDtVFfBIm4"/>
+</div>
+</div>
+</section>
+<!-- Workflow Automation Visualization -->
+<section class="bg-surface-container-lowest py-section-padding-desktop px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block uppercase">オーケストレーション</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">インテリジェントなプロセス統合</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">
+                            私たちのAIは単なる「チャット」ではありません。ERP、CRM、社内データベースと連携し、これまでチームが数週間かけていた複雑なプロセスを自動実行します。
+                        </p>
+</div>
+</div>
+<div class="relative h-[400px] flex items-center justify-around border border-outline-variant rounded-2xl bg-surface-bright/50 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,176,255,0.05),transparent_70%)]"></div>
+<div class="flex flex-col items-center gap-4 workflow-node">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">database</span>
+</div>
+<span class="font-label-caps text-label-caps">データ取り込み</span>
+</div>
+<div class="w-1/4 h-[2px] bg-gradient-to-r from-primary to-secondary-container opacity-20"></div>
+<div class="flex flex-col items-center gap-4 workflow-node">
+<div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-xl">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">neurology</span>
+</div>
+<span class="font-label-caps text-label-caps font-bold text-primary">Aether AI コア</span>
+</div>
+<div class="w-1/4 h-[2px] bg-gradient-to-r from-secondary-container to-primary opacity-20"></div>
+<div class="flex flex-col items-center gap-4 workflow-node">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-secondary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<span class="font-label-caps text-label-caps">実行</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Assistant Preview -->
+<section class="py-section-padding-desktop px-gutter max-w-container-max mx-auto">
+<div class="bento-grid">
+<!-- Chat UI -->
+<div class="col-span-12 lg:col-span-5 bg-white border border-outline-variant rounded-2xl shadow-sm overflow-hidden flex flex-col h-[600px]">
+<div class="p-4 border-b border-outline-variant flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<h3 class="font-button text-button text-primary">Aether コンシェルジュ</h3>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">オンライン</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto custom-scrollbar">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">smart_toy</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl rounded-tl-none max-w-[80%] text-body-sm leading-relaxed">
+                                こんにちは。第3四半期の物流ログの監査が完了しました。配送レーン4Bで12%の不一致が見つかりました。修正レポートのドラフトを作成しましょうか？
+                            </div>
+</div>
+<div class="flex gap-3 flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-sm">person</span>
+</div>
+<div class="bg-primary text-white p-4 rounded-xl rounded-tr-none max-w-[80%] text-body-sm leading-relaxed">
+                                はい、お願いします。また、その結果を地域マネージャーの月次サマリーと比較してください。
+                            </div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">smart_toy</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl rounded-tl-none max-w-[80%] text-body-sm leading-relaxed">
+                                処理中... 両方のデータセットを照合しました。PDFレポートを生成しています。
+                                <div class="mt-3 flex items-center gap-2 p-2 bg-white rounded border border-outline-variant cursor-pointer hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+<span class="text-xs font-semibold">Q3_不一致調査レポート.pdf</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant">
+<div class="flex items-center gap-2 bg-surface p-3 rounded-lg border border-outline-variant">
+<input class="bg-transparent border-none focus:ring-0 text-sm flex-1" placeholder="コマンドを入力..." type="text"/>
+<button class="w-8 h-8 bg-secondary-container text-white rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Task Table -->
+<div class="col-span-12 lg:col-span-7 bg-white border border-outline-variant rounded-2xl shadow-sm overflow-hidden flex flex-col h-[600px]">
+<div class="p-6">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-2">自動化されたタスク</h3>
+<p class="text-body-sm text-on-surface-variant">実行中のAIバックグラウンド操作のライブフィード</p>
+</div>
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface text-on-surface-variant font-label-caps text-[11px] uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">タスク名</th>
+<th class="px-6 py-4">ステータス</th>
+<th class="px-6 py-4">成果</th>
+<th class="px-6 py-4">精度</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-sm">
+<tr class="hover:bg-surface transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-blue-50 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-sm">description</span>
+</div>
+<span>請求書データ抽出</span>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-green-50 text-green-700 rounded text-xs font-semibold">完了</span>
+</td>
+<td class="px-6 py-5 text-secondary font-semibold">8.4 時間削減</td>
+<td class="px-6 py-5">
+<div class="w-full bg-outline-variant h-1 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[99.8%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-purple-50 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+<span>顧客感情分析</span>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-semibold">実行中</span>
+</td>
+<td class="px-6 py-5 text-secondary font-semibold">1,200 通のメール</td>
+<td class="px-6 py-5">
+<div class="w-full bg-outline-variant h-1 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-full w-[65%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-teal-50 flex items-center justify-center text-teal-600">
+<span class="material-symbols-outlined text-sm">query_stats</span>
+</div>
+<span>予測的供給補充</span>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-xs font-semibold">スケジュール済み</span>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">デイリーサイクル</td>
+<td class="px-6 py-5">
+<div class="w-full bg-outline-variant h-1 rounded-full overflow-hidden">
+<div class="bg-outline h-full w-0"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-outline-variant flex justify-center">
+<button class="text-primary font-button text-sm flex items-center gap-2 hover:underline">
+                            ワークフロー履歴を表示
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Before/After -->
+<section class="bg-primary py-section-padding-desktop px-gutter overflow-hidden relative">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="max-w-container-max mx-auto relative">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-white">業務プロセスの進化</h2>
+<p class="text-white/60 mt-4 max-w-xl mx-auto leading-relaxed">直線的なボトルネックから、並列化されたAIワークフローへの転換をご覧ください。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<!-- Before -->
+<div class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+<h4 class="font-label-caps text-label-caps text-white mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span> 従来型のオペレーション
+                        </h4>
+<div class="space-y-6">
+<div class="flex items-center gap-4 text-white/50">
+<div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs">1</div>
+<div class="flex-1 bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-white/20 h-full w-full"></div>
+</div>
+<span class="text-xs uppercase">手動入力</span>
+</div>
+<div class="flex items-center gap-4 text-white/50">
+<div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs">2</div>
+<div class="flex-1 bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-white/20 h-full w-full"></div>
+</div>
+<span class="text-xs uppercase">検証・照合</span>
+</div>
+<div class="flex items-center gap-4 text-white/50">
+<div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs">3</div>
+<div class="flex-1 bg-white/5 h-2 rounded-full overflow-hidden">
+<div class="bg-white/20 h-full w-full"></div>
+</div>
+<span class="text-xs uppercase">承認待ち</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-white/10">
+<p class="text-red-300 font-bold text-lg">合計時間: 48時間</p>
+</div>
+</div>
+<!-- After -->
+<div class="bg-white rounded-2xl p-8 shadow-2xl relative">
+<div class="absolute -top-4 -right-4 bg-secondary-container text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg">95% 自動化</div>
+<h4 class="font-label-caps text-label-caps text-primary mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span> AetherAI 導入後
+                        </h4>
+<div class="flex items-center justify-center py-10 relative">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-xl animate-pulse">
+<span class="material-symbols-outlined text-white">neurology</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-around pointer-events-none">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant">
+<p class="text-secondary font-bold text-lg">合計時間: 4分</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Implementation Timeline -->
+<section class="py-section-padding-desktop px-gutter max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-secondary uppercase">スケールへの道のり</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-2">導入ロードマップ</h2>
+</div>
+<div class="max-w-3xl mx-auto space-y-0">
+<!-- Step 1 -->
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-white z-10">
+<span class="font-bold text-primary">01</span>
+</div>
+<div class="w-[2px] flex-1 bg-outline-variant"></div>
+</div>
+<div class="pb-16 pt-2">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-3">戦略立案 &amp; 監査</h3>
+<p class="text-on-surface-variant leading-relaxed">既存の手動ワークフローをマッピングし、ROI（投資対効果）と複雑さに基づいて、効果の高い自動化候補を特定します。</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-white z-10">
+<span class="font-bold text-primary">02</span>
+</div>
+<div class="w-[2px] flex-1 bg-outline-variant"></div>
+</div>
+<div class="pb-16 pt-2">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-3">カスタム統合</h3>
+<p class="text-on-surface-variant leading-relaxed">弊社のエンジニアが、暗号化されたAPIを通じて貴社のデータスタックに安全に接続する、カスタムLLMエージェントを構築します。</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary text-white z-10">
+<span class="font-bold">03</span>
+</div>
+<div class="w-[2px] flex-1 bg-transparent"></div>
+</div>
+<div class="pb-8 pt-2">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-3">展開 &amp; 最適化</h3>
+<p class="text-on-surface-variant leading-relaxed">実際のパフォーマンス指標と進化するビジネス要件に基づき、継続的な改善を実施します。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- KPI Improvements -->
+<section class="bg-surface-container-low py-section-padding-desktop px-gutter">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="space-y-4">
+<div class="font-display-lg text-display-lg text-secondary">40%</div>
+<p class="font-label-caps text-label-caps uppercase text-on-surface-variant">運用コスト削減</p>
+</div>
+<div class="space-y-4">
+<div class="font-display-lg text-display-lg text-secondary">3x</div>
+<p class="font-label-caps text-label-caps uppercase text-on-surface-variant">データ処理スピード</p>
+</div>
+<div class="space-y-4">
+<div class="font-display-lg text-display-lg text-secondary">12k</div>
+<p class="font-label-caps text-label-caps uppercase text-on-surface-variant">月間削減工数</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-section-padding-desktop px-gutter max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-12 text-center">よくあるご質問</h2>
+<div class="space-y-4">
+<details class="group border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white hover:bg-surface transition-colors">
+<span class="font-button text-button">AetherAIでデータのセキュリティはどのように確保されますか？</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 bg-white border-t border-outline-variant text-on-surface-variant text-body-sm leading-relaxed">
+                        弊社はSOC2コンプライアンスとエンタープライズグレードの暗号化を最優先事項としています。貴社のデータが公開モデルのトレーニングに使用されることはありません。また、高セキュリティ分野向けにオンプレミス展開オプションも提供しています。
+                    </div>
+</details>
+<details class="group border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white hover:bg-surface transition-colors">
+<span class="font-button text-button">これは既存の従業員を置き換えるものですか？</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 bg-white border-t border-outline-variant text-on-surface-variant text-body-sm leading-relaxed">
+                        私たちの哲学は「拡張された知能（Augmented Intelligence）」です。単純なデータ入力やレポート作成といった「退屈な作業」を取り除き、専門家が戦略や高度な意思決定に集中できるようにすることを目的としています。
+                    </div>
+</details>
+<details class="group border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white hover:bg-surface transition-colors">
+<span class="font-button text-button">投資対効果（ROI）が見えるまでどのくらいかかりますか？</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 bg-white border-t border-outline-variant text-on-surface-variant text-body-sm leading-relaxed">
+                        ほとんどの企業が、最初の60日以内に測定可能なROIを実感されています。弊社の迅速な統合フレームワークにより、最短3週間で自動化の第一段階を展開することが可能です。
+                    </div>
+</details>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-section-padding-desktop px-gutter">
+<div class="max-w-5xl mx-auto bg-primary rounded-3xl p-12 md:p-24 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary-container opacity-20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary-container opacity-10 blur-[100px] rounded-full"></div>
+<h2 class="font-display-lg text-display-lg text-white mb-6 relative z-10">業務を変革する準備はできていますか？</h2>
+<p class="text-white/70 text-body-md mb-10 max-w-xl mx-auto relative z-10 leading-relaxed">AetherAIですでにスケールを実現している先進企業に加わりましょう。今すぐアーキテクチャ・コンサルテーションをご予約ください。</p>
+<button class="bg-secondary-container text-white px-10 py-5 rounded-lg font-button text-button hover:bg-white hover:text-primary transition-all relative z-10">
+                    相談を予約する
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-gutter py-section-padding-desktop flex flex-col md:flex-row justify-between gap-12">
+<div class="max-w-xs">
+<span class="font-headline-lg text-headline-lg text-primary block mb-6">AetherAI</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    洗練されたAI自動化と戦略的統合を通じて、エンタープライズの生産性の未来を構築します。
+                </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div>
+<h5 class="font-label-caps text-label-caps text-primary mb-6 uppercase">会社概要</h5>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">サービス</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">ソリューション</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">事例紹介</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-primary mb-6 uppercase">法的情報</h5>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">プライバシーポリシー</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">利用規約</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-primary mb-6 uppercase">お問い合わせ</h5>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">お問い合わせ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary" href="#">サポート</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter py-8 border-t border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 AetherAI Agency. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple animation logic or interactivity
+        document.querySelectorAll('details').forEach((el) => {
+            el.addEventListener('toggle', () => {
+                if (el.open) {
+                    document.querySelectorAll('details').forEach((other) => {
+                        if (other !== el) other.removeAttribute('open');
+                    });
+                }
+            });
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
